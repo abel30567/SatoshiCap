@@ -1,0 +1,69 @@
+body{
+    padding-top: 8%;
+    background-color: black;
+    color:white;
+    font-family: "Ubuntu","HelveticaNeue","Helvetica Neue",sans-serif;
+
+}
+.nav-container{
+    width:100%;
+}
+
+.logo{
+    float: left;
+    width:20%;
+    margin-top:-1%;
+}
+
+
+table{
+    width:100%;
+    background-color: white;
+    color: #4266b2;
+}
+
+tr{
+    height:30px;
+    border: 1px solid gray;
+}
+td, th{
+    text-align: center;
+}
+td img{
+    width: 20px;
+}
+
+.navbar-nav{
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #22afa1;
+}
+
+.navbar-nav>li {
+    display: inline-block !important;
+    float: none;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.3em;
+    font-family: "Ubuntu","HelveticaNeue","Helvetica Neue",sans-serif;   
+}
+
+@media screen (min-width: 480px) {
+    .nav-container button{ 
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    /* This is fo the mobile responsiveness */
+    img.logo {
+        display: block;
+        margin: 0 auto;
+        width:50%;
+    }
+    
+}
+    /* This is fo the mobile responsiveness */

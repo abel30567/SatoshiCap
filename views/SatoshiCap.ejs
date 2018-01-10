@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Satoshi Cap is a derivative of Coin Market Cap but normalized to Bitcoin's circulating supply. This was done to see the fiat price fluctuation relative to Bitcoin.">
+    <meta name="author" content="iMarkett Co.">
+    <link rel="icon" href="assets/Favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+
+    <title>Satoshi Cap | Powered by iMarkett</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/custom.css" >
+ 
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      
+        <div class="navbar-header">
+          <div class="nav-container">
+            <a class="navbar-brand" href="https://iMarkett.com"><img class="logo" src="/assets/imarkettHeadWhite.png" /></a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://iMarkett.com">Home</a></li>
+            <li><a href="https://imarkett.com/collections/all">Products</a></li>
+            <li><a href="https://satoshicap.imarkett.com">Satoshi Cap</a></li>
+            <li><a href="https://imarkett.com/pages/imarkett-porto">Porto</a></li>
+            <li><a href="https://imarkett.com/pages/contact-us">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->      
+    </nav>
+
+    <div class="container">
+      <div style="text-align:center;"><h1>Satoshi Cap</h1></div>
+      <div style="text-align:center;"><h5>Powered by <a href="https://iMarkett.com">iMarkett</a></h5></div>
+      <div style="text-align:center;">
+      <button style="width:25%; background-color:#22afa1;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Description
+      </button></div>
+      <div class="collapse" id="collapseExample">
+        <p><strong>Description:</strong> This chart is based of a "Bitcoin Dollar", this is not a Bitcoin fork, it's use 
+        is to be used as a form of measure of other cryptocurrencies relative to Bitcoin's circulating supply. There is a lot of unit bias happening in the crypto market
+        this was made to fight off unit bias.</p>
+
+        <h3>What is a Bitcoin Dollar (<strong>₿TD</strong>)?</h3>
+          <p>A Bitcoin Dollar is a Bitcoin worth of a Dollar. For instance, the current Bitcoin price is $<%= data[0].price_usd %> so $1 is worth <%= (1/data[0].price_usd* 100000000).toFixed(0) %> Satoshi.</p>
+          <h4>What is a Satoshi?</h4>
+          <p>Each bitcoin (BTC) is divisible to the 8th decimal place, so each BTC can be split into 100,000,000 units. Each unit of bitcoin, or 0.00000001 bitcoin, is called a satoshi. A Satoshi is the smallest unit of Bitcoin.</p>
+
+          <h4>How many Satoshis are in a Bitcoin?</h4>
+          <p>There are 100,000,000 satoshi in a BTC.</p>
+          <p>Thus,</p>
+
+          <h1 style="text-align:center;"><strong>$1 = <%= (1/data[0].price_usd* 100000000).toFixed(0)  %> Satoshi = 1 ₿TD</strong></h1>
+          
+        <h3>What is unit bias?</h3>
+          <p>Unit bias can be thought of the manipulation of the value of an asset based on a share/unit price. For example, you cannot compare the pricing of these tokens relative to each other because they all have different amounts of tokens in circulation.</p>
+          <br /> 
+          <p>We have created this to handle unit bias and every token price be able to relate to Bitcoin's price movement.</p>
+          
+    </div>
+        <br />
+        <h4 style="text-align:center;">Current ₿TD Market Cap: <%= (globalCap /BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></h4>
+        <h4 style="text-align:center;">Each Token Supply: <%= BTCsupply%></h4>
+      <div class="col-md-8">
+        <table style="float:left;">
+            <tr>
+                <th>Rank</th>
+                <th></th>
+                <th style="text-align:left;">Cryptocurrency</th>
+                <th>Symbol</th>
+                <th>Market Cap (₿TD)</th>
+                <th>₿TD Price</th>
+                <th>₿TD Change (24h)</th>
+
+            </tr>
+                      <% data.forEach(function(crypto) { %>
+                <tr>
+                <td><%= crypto.rank %></td>
+                <% if (crypto.name == "Golem") { %>
+                  <% crypto.name = "Golem Network Tokens"%>
+                <% } else if (crypto.name == "Byteball Bytes") {%>
+                <% crypto.name = "Byteball"%>
+                <% } else if (crypto.name == "Santiment Network Token") {%>
+                <% crypto.name = "Santiment"%>
+                <% } %>
+                <td><img src="https://files.coinmarketcap.com/static/img/coins/32x32/<%= crypto.name.replace(/\s+/g, '-').toLowerCase() %>.png" /></td>
+                <td style="text-align:left;"><%= crypto.name%></td>
+                <td><%= crypto.symbol %></td>
+                <td><%= (crypto.market_cap_usd/BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) %></td>
+                <td><span>$<%= (crypto.price_usd * crypto.total_supply / BTCsupply).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></span></td>
+                <td><span class="change"><%= crypto.percent_change_24h %></span>%</td>
+                
+                </tr>
+            <% }); %>
+        </table>
+      </div>
+      <div class="col-md-4" style="float:right;"><a href="https://www.ledgerwallet.com/r/f443"><img width=300 height=600 alt="Ledger Nano S - The secure hardware wallet" src="https://www.ledgerwallet.com/images/promo/nano-s/ledger_nano-s_3-0-0x6-0-0.jpg"></a></div>
+      
+
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
+    
+    <script>  
+      $(document).ready(function () {
+
+          $(".change")
+              .filter(function () {
+              return $(this).html() < 0;
+          })
+              .parent().css('color', 'red');
+      });
+      $(document).ready(function () {
+
+          $(".change")
+              .filter(function () {
+              return $(this).html() > 0;
+          })
+              .parent().css('color', '#66cd00');
+      });
+    </script>
+  </body>
+</html>
