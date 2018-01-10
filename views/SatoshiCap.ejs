@@ -102,7 +102,7 @@
                 <td style="text-align:left;"><%= crypto.name%></td>
                 <td><%= crypto.symbol %></td>
                 <td><%= (crypto.market_cap_usd/BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) %></td>
-                <td><span>$<%= (crypto.price_usd * crypto.total_supply / BTCsupply).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></span></td>
+                <td><span>$<%= (crypto.market_cap_usd / BTCsupply).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></span></td>
                 <td><span class="change"><%= crypto.percent_change_24h %></span>%</td>
                 
                 </tr>
