@@ -44,7 +44,7 @@
         </div><!--/.nav-collapse -->      
     </nav>
 
-    <div class="container">
+    <div class="container" style="padding:0;">
       <div style="text-align:center;"><h1>Satoshi Cap</h1></div>
       <div style="text-align:center;"><h5>Powered by <a href="https://iMarkett.com">iMarkett</a></h5></div>
       <div style="text-align:center;">
@@ -56,7 +56,7 @@
         is to be used as a form of measure of other cryptocurrencies relative to Bitcoin's circulating supply. There is a lot of unit bias happening in the crypto market
         this was made to fight off unit bias.</p>
 
-        <h3>What is a Bitcoin Dollar (<strong>₿TD</strong>)?</h3>
+        <h3>What is a Bitcoin Dollar (<strong>BTD</strong>)?</h3>
           <p>A Bitcoin Dollar is a Bitcoin worth of a Dollar. For instance, the current Bitcoin price is $<%= data[0].price_usd %> so $1 is worth <%= (1/data[0].price_usd* 100000000).toFixed(0) %> Satoshi.</p>
           <h4>What is a Satoshi?</h4>
           <p>Each bitcoin (BTC) is divisible to the 8th decimal place, so each BTC can be split into 100,000,000 units. Each unit of bitcoin, or 0.00000001 bitcoin, is called a satoshi. A Satoshi is the smallest unit of Bitcoin.</p>
@@ -65,7 +65,7 @@
           <p>There are 100,000,000 satoshi in a BTC.</p>
           <p>Thus,</p>
 
-          <h1 style="text-align:center;"><strong>$1 = <%= (1/data[0].price_usd* 100000000).toFixed(0)  %> Satoshi = 1 ₿TD</strong></h1>
+          <h1 style="text-align:center;"><strong>$1 = <%= (1/data[0].price_usd* 100000000).toFixed(0)  %> Satoshi = 1 BTD</strong></h1>
           
         <h3>What is unit bias?</h3>
           <p>Unit bias can be thought of the manipulation of the value of an asset based on a share/unit price. For example, you cannot compare the pricing of these tokens relative to each other because they all have different amounts of tokens in circulation.</p>
@@ -74,18 +74,20 @@
           
     </div>
         <br />
-        <h4 style="text-align:center;">Current ₿TD Market Cap: <%= (globalCap /BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></h4>
+        <h4 style="text-align:center;">Current BTD Market Cap: <%= (globalCap /BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></h4>
         <h4 style="text-align:center;">Each Token Supply: <%= BTCsupply%></h4>
-      <div class="col-md-8">
+        <div class="topLedger"><a href="https://www.ledgerwallet.com/r/f443"><img style="width:100%;" alt="Ledger Nano S - The secure hardware wallet" src="https://www.ledgerwallet.com/images/promo/nano-s/ledger_nano-s_3-2-0x5-0.jpg"></a></div>
+
+      <div class="col-md-8" style="padding:0;">
         <table style="float:left;">
             <tr>
                 <th>Rank</th>
                 <th></th>
                 <th style="text-align:left;">Cryptocurrency</th>
                 <th>Symbol</th>
-                <th>Market Cap (₿TD)</th>
-                <th>₿TD Price</th>
-                <th>₿TD Change (24h)</th>
+                <th class="Mcap">Market Cap (BTD)</th>
+                <th>BTD Price</th>
+                <th>BTD Change (24h)</th>
 
             </tr>
                       <% data.forEach(function(crypto) { %>
@@ -101,15 +103,15 @@
                 <td><img src="https://files.coinmarketcap.com/static/img/coins/32x32/<%= crypto.name.replace(/\s+/g, '-').toLowerCase() %>.png" /></td>
                 <td style="text-align:left;"><%= crypto.name%></td>
                 <td><%= crypto.symbol %></td>
-                <td><%= (crypto.market_cap_usd/BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) %></td>
-                <td><span>$<%= (crypto.market_cap_usd / BTCsupply).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%></span></td>
+                <td class="Mcap"><%= (crypto.market_cap_usd/BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) %>&emsp;</td>
+                <td><span>$<%= (crypto.market_cap_usd / BTCsupply).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%> &emsp;</span></td>
                 <td><span class="change"><%= crypto.percent_change_24h %></span>%</td>
                 
                 </tr>
             <% }); %>
         </table>
       </div>
-      <div class="col-md-4" style="float:right;"><a href="https://www.ledgerwallet.com/r/f443"><img width=300 height=600 alt="Ledger Nano S - The secure hardware wallet" src="https://www.ledgerwallet.com/images/promo/nano-s/ledger_nano-s_3-0-0x6-0-0.jpg"></a></div>
+      <div id="ledger" class="col-md-4 col-xs-4" style="float:right;"><a href="https://www.ledgerwallet.com/r/f443"><img style="width:300px;" alt="Ledger Nano S - The secure hardware wallet" src="https://www.ledgerwallet.com/images/promo/nano-s/ledger_nano-s_3-0-0x6-0-0.jpg"></a></div>
       
 
 

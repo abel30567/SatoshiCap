@@ -5,6 +5,9 @@ body{
     font-family: "Ubuntu","HelveticaNeue","Helvetica Neue",sans-serif;
 
 }
+.topLedger{
+    display: none;
+}
 .nav-container{
     width:100%;
 }
@@ -52,18 +55,36 @@ td img{
     font-family: "Ubuntu","HelveticaNeue","Helvetica Neue",sans-serif;   
 }
 
-@media screen (min-width: 480px) {
-    .nav-container button{ 
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+@media only screen and (max-width: 768px) {
+
+    body{
+        padding-top: 15%;
     }
-    /* This is fo the mobile responsiveness */
-    img.logo {
+    /* For mobile phones: */
+    .logo {
+        float: left;
+        width: 34%;
+        margin-left: 32%;
+        margin-top: 2%;
+    }
+    #ledger {
+        display: none;
+    }
+    .topLedger{
         display: block;
-        margin: 0 auto;
-        width:50%;
     }
-    
-}
-    /* This is fo the mobile responsiveness */
+    .navbar-brand{
+        float:none;
+    }
+    .navbar-toggle{
+        margin-top:5%;
+        margin-left:10%;
+        float:none;
+    }
+    .collapse{
+        text-align: center;
+    }
+    .Mcap{
+        display: none;
+    }
+} /* This is fo the mobile responsiveness */
