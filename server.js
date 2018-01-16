@@ -23,8 +23,11 @@ app.get('/', function(req, res) {
         });
     });
 });    
+app.get('/miner', function(req, res) {
+    res.render('Miner.ejs');
+});
 
-var PORT = 3000;
+var PORT = 80;
 
 app.listen(PORT, function(err, res) {
     if (err) {
