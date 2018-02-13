@@ -44,12 +44,12 @@
         </div><!--/.nav-collapse -->      
     </nav>
 
-    <div class="container" style="padding:0;">
+    <div  class="container"  style="padding:0;">
       <div style="text-align:center;"><h1>Satoshi Cap</h1></div>
       <div style="text-align:center;"><h5>Powered by <a href="https://iMarkett.com">iMarkett</a></h5></div>
       <div style="text-align:center;">
 
-      <button style="width:25%; background-color:#22afa1;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <button style="width:25%; background-color:#22afa1;"  class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Description
       </button></div>
       <div class="collapse" id="collapseExample">
@@ -89,9 +89,8 @@
                 <th class="Mcap">Market Cap (BTD)</th>
                 <th>BTD Price</th>
                 <th>BTD Change (24h)</th>
-
             </tr>
-                      <% data.forEach(function(crypto) { %>
+                  <% data.forEach(function(crypto) { %>
                 <tr>
                 <td><%= crypto.rank %></td>
                 <% if (crypto.name == "Golem") { %>
@@ -107,17 +106,17 @@
                 <td class="Mcap"><%= (crypto.market_cap_usd/BTCprice).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}) %>&emsp;</td>
                 <td><span>$<%= (crypto.market_cap_usd / BTCsupply).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})%> &emsp;</span></td>
                 <td><span class="change"><%= crypto.percent_change_24h %></span>%</td>
-                
                 </tr>
             <% }); %>
         </table>
       </div>
       <div id="ledger" class="col-md-4 col-xs-4" style="float:right;"><a href="https://www.ledgerwallet.com/r/f443"><img style="width:300px;" alt="Ledger Nano S - The secure hardware wallet" src="https://www.ledgerwallet.com/images/promo/nano-s/ledger_nano-s_3-0-0x6-0-0.jpg"></a></div>
-      
 
 
     </div><!-- /.container -->
+    <div id="particle-canvas" class="row">
 
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -143,6 +142,8 @@
           })
               .parent().css('color', '#66cd00');
       });
+
+      
     </script>
   </body>
 </html>

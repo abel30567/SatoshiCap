@@ -1,0 +1,51 @@
+.container{
+    text-align: center;
+}
+.button {
+    background-color: #21ce99; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    z-index: 20;
+    position: fixed;
+    top: 75%;
+    right:45%;
+
+}
+.logoTitle{
+    z-index: 20;
+    position: fixed;
+    top: 25%;
+    right:32.5%;
+    width:500px;
+}
+.subtitle{
+    z-index: 20;
+    position: fixed;
+    top: 55%;
+    right:41%;
+    font-size:4em;
+    color: white;
+
+
+}
+
+.button1 {
+    background-color: white; 
+    color: #21ce99; 
+    border: 2px solid #21ce99;
+    border-radius: 5%;
+}
+
+.button1:hover {
+    background-color: #21ce99;
+    color: white;
+}

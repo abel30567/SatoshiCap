@@ -31,13 +31,10 @@ app.get('/', function(req, res) {
         });
     });
 });    
-app.get('/buy', function(req, res) {
-    request('https://api.coinmarketcap.com/v1/ticker/', function(error, response, body) {
-        var chart = JSON.parse(body);
-        var BTCprice = Number(chart[0].price_usd).toFixed(2);
-        res.render('Purchase.ejs', { keyPublishable: publishableKey, BTCprice: BTCprice });
-    });
-});
+app.get('/:seed', function(req, res) {
+    var seed = req.params.seed;
+    res.render('index', {seed:seed});
+ });    
 
 var PORT = 3000;
 

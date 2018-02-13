@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My IOTA Leaderboard</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Galada|Ubuntu:400,500,700" rel="stylesheet">
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/iota.min.js"></script>
+
+
+    <script type="text/javascript" src="js/helpers/updateLeaderboardHTML.js"></script>
+    <script type="text/javascript" src="js/helpers/updateAddressHTML.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+    <main>
+        <header class="header">
+           <p class="header__title">My<span><img class="header__logo" src="images/logo.png" /></span>Love </p>
+            <nav>
+                <div class="nav-right hidden-xs">
+                    <div class="button" id="btn">
+                        <div class="bar top"></div>
+                        <div class="bar middle"></div>
+                        <div class="bar bottom"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <section class="leaderboard">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class="rank__title">Message #</th>
+                        <th class="address__title">Place</th>
+                        <th class="amount__title">Clue</th>
+                        <th class="full__title">IOTA sent</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard">
+                    <tr>
+                        <td class="iota__rank"></td>
+                        <td class="iota__name"></td>
+                        <td class="iota__message">Scan your QR code to get clue.</td>
+                        <td class="iota__value"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Sidebar -->
+        <div class="options">
+        
+                
+                        <div class="form-group">
+                            <label>Seed</label>
+                            <input type="password" id="userSeed" class="form-control" placeholder="Insert Seed" value="<%= seed %>">
+                        </div>
+                        <button type="button" id="seedSubmit" class="btn btn-default">Submit</button>
+                 
+            
+        </div>
+</body>
+</html>
